@@ -1,0 +1,5 @@
+[
+{"id": "PR01", "singular": "dulce casero", "plural":"dulces caseros", "price":80, "stock":30, "cart":0},
+{"id": "PR02", "singular": "kit de baño", "plural":"kits de baño", "price":300, "stock":10, "cart":0},
+{"id": "PR03", "singular": "mapa de la zona", "plural":"mapas de la zona", "price":50, "stock":100, "cart":0}
+]
