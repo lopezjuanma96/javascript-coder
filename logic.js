@@ -92,6 +92,8 @@ class productManager {
 
 class productViewer {
     
+    showCart = false;
+
     generateStock(manager){
         var txt = '<h3>¿Qué vas a comprar?</h3><div class="stock available">';
         const available = manager.getAvailableStock()
@@ -109,7 +111,7 @@ class productViewer {
             txt += `<div class="button-container"><input type="button" value="Agregar" id="${p.id}StockButton" disabled></div>`;
             txt += '</div>';
         }
-        txt += '</div><hr>';
+        txt += '</div>';
         //console.log(txt);
         return txt;
     }
@@ -123,20 +125,24 @@ class productViewer {
             txt += `<div class="button-container"><input type="button" value="Quitar" id="${p.id}CartButton"></div>`;
             txt += '</div>';
         }
-        txt += '</div><hr>';
+        txt += '</div>';
         //console.log(txt);
         return txt;
     }
 
     createView(manager){
-        $("#app").hide().delay(2000).html("").append(this.generateStock(manager)).append(this.generateCart(manager)).fadeIn();
+        $("#app").hide().delay(2000).html("").append(this.generateStock(manager)).fadeIn();
         this.defineEvents(manager);
     }
 
     updateView(manager){
-        $("#app").html("").append(this.generateStock(manager)).append(this.generateCart(manager));
+        if (this.showCart) {
+            $("#app").html("").append(this.generateCart(manager));
+        } else {
+            $("#app").html("").append(this.generateStock(manager));
+        }
         this.defineEvents(manager);
-        pm.writeStorage();
+        manager.writeStorage();
     }
 
     defineEvents(manager){
@@ -180,5 +186,9 @@ pm.readStorage()
 
 $(document).ready( () => {
     pv.createView(pm);
+    $('#headerButton').click((e) => {
+        pv.showCart = !pv.showCart;
+        pv.updateView(pm);
+    });
 }
 )
