@@ -2,10 +2,37 @@
 
 body{
     background-color: whitesmoke;
+    height: 100%;
+    width: 100%;
 }
 
 header {
     background-color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 1% 1%;
+}
+
+.headerTitle{
+    width: 95%;
+}
+
+.headerTitle h1{
+    margin: 0px;
+}
+
+.headerButton{
+    background-color: lightgrey;
+    border: grey 2px solid;
+    border-radius: 25%;
+    padding: 0.3rem;
+    padding-bottom: 0.1rem;
+}
+
+.headerButton:hover{
+    cursor:pointer;
 }
 
 header h1 {
