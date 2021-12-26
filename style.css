@@ -4,10 +4,11 @@ body{
     background-color: whitesmoke;
     height: 100%;
     width: 100%;
+    margin: 0px;
 }
 
 header {
-    background-color: whitesmoke;
+    background-color: green;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -15,11 +16,8 @@ header {
     padding: 1% 1%;
 }
 
-.headerTitle{
-    width: 95%;
-}
-
 .headerTitle h1{
+    color: whitesmoke;
     margin: 0px;
 }
 
@@ -42,6 +40,19 @@ header h1 {
     margin: 1rem;
 }
 
+#app{
+    width: 90%;
+    margin: 0px 5%;
+}
+
+#app > h3{
+    position: relative;
+    right: 2%;
+    font-family: 'Pushster', cursive;
+    font-size: 2rem;
+    margin: 0px;
+}
+
 .stock{
     display: flex;
     flex-direction: row;
@@ -57,13 +68,16 @@ header h1 {
 }
 
 .stock > div > h3{
-    font-family: 'Pushster', cursive;
+    font-family: -webkit-pictograph;
     font-size: x-large;
     color: white;
+    margin: 2%;
     margin-left: 5%;
 }
 
 .stock > div > p{
+    font-family: -webkit-pictograph;
+    margin: 1%;
     margin-left: 5%;
     font-weight: 600;
 }
@@ -105,13 +119,16 @@ header h1 {
 }
 
 .cart > div > h3{
-    font-family: 'Pushster', cursive;
+    font-family: -webkit-pictograph;
     font-size: x-large;
     color: white;
+    margin: 1%;
     margin-left: 5%;
 }
 
 .cart > div > p{
+    font-family: -webkit-pictograph;
+    margin: 1%;
     margin-left: 5%;
     font-weight: 600;
 }
@@ -133,7 +150,7 @@ header h1 {
     color: white;
     border: 1px white solid;
     padding: 0.1rem 1rem;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: -webkit-pictograph;
 }
 
 .button-container input:hover{
