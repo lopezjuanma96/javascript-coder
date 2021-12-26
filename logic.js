@@ -17,6 +17,19 @@ class productManager {
                     console.log("Failed to load data from server. Check your internet connection.");
                 }
             })
+        } else {
+            console.log("Reading from cache..");
+            this.list = JSON.parse(localStorage.getItem("products"));
+        }
+    }
+
+    writeStorage(){
+        try{
+            console.log("Saving to cache..");
+            localStorage.setItem("products", JSON.stringify(this.list));
+            console.log("Cache saved");
+        } catch(QuotaExceededError){
+            console.log("Failed to save cache..")
         }
     }
 
@@ -123,6 +136,7 @@ class productViewer {
     updateView(manager){
         $("#app").html("").append(this.generateStock(manager)).append(this.generateCart(manager));
         this.defineEvents(manager);
+        pm.writeStorage();
     }
 
     defineEvents(manager){
