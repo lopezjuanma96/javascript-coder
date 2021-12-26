@@ -84,16 +84,16 @@ class productViewer {
         const available = manager.getAvailableStock()
         for (var p of available) {
             txt += `<div class="${p.id}block">`
-            txt += `<h3>${manager.getNameById(p.id)}</h3><p>Precio: ${p.price}</p><p>Stock: ${p.stock}</p>`;
-            txt += `<input type="button" value="Agregar" id="${p.id}StockButton">`;
+            txt += `<img src="${p.image}" alt="${p.id}" width="100%"><h3>${manager.getNameById(p.id)}</h3><p>Precio: ${p.price}</p><p>Stock: ${p.stock}</p>`;
+            txt += `<div class="button-container"><input type="button" value="Agregar" id="${p.id}StockButton"></div>`;
             txt += '</div>';
         }
         txt += '</div>';
         txt += '<div class="stock outof">';
         for (p of manager.getOutOfStock()) {
             txt += `<div class="${p.id}block">`
-            txt += `<h3>${manager.getNameById(p.id)}</h3><p>Precio: ${p.price}</p><p>Agotado!</p>`;
-            txt += `<input type="button" value="Agregar" id="${p.id}StockButton" disabled>`;
+            txt += `<img src="${p.image}" alt="${p.id}" width="100%"><h3>${manager.getNameById(p.id)}</h3><p>Precio: ${p.price}</p><p>Agotado!</p>`;
+            txt += `<div class="button-container"><input type="button" value="Agregar" id="${p.id}StockButton" disabled></div>`;
             txt += '</div>';
         }
         txt += '</div><hr>';
@@ -106,8 +106,8 @@ class productViewer {
         const available = manager.getInCart()
         for (var p of available) {
             txt += `<div class="${p.id}block">`
-            txt += `<h3>${manager.getNameById(p.id)}</h3><p>En Carrito: ${p.cart}</p>`;
-            txt += `<input type="button" value="Agregar" id="${p.id}CartButton">`;
+            txt += `<img src="${p.image}" alt="${p.id}" width="100%"><h3>${manager.getNameById(p.id)}</h3><p>En Carrito: ${p.cart}</p>`;
+            txt += `<div class="button-container"><input type="button" value="Quitar" id="${p.id}CartButton"></div>`;
             txt += '</div>';
         }
         txt += '</div><hr>';

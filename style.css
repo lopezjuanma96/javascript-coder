@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Pushster&display=swap'); /*font-family: 'Pushster', cursive;*/
+
+body{
+    background-color: whitesmoke;
+}
+
+header {
+    background-color: whitesmoke;
+}
+
+header h1 {
+    font-family: 'Pushster', cursive;
+    font-size: 4rem;
+    color: black;
+    margin: 1rem;
+}
+
+.stock{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    column-gap: 1rem;
+    width: 100%;
+    margin-bottom: 2%;
+}
+
+.stock > div{
+    width: 20%;
+}
+
+.stock > div > h3{
+    font-family: 'Pushster', cursive;
+    font-size: x-large;
+    color: white;
+    margin-left: 5%;
+}
+
+.stock > div > p{
+    margin-left: 5%;
+    font-weight: 600;
+}
+
+.available > div {
+    background-color: green;
+}
+
+.outof > div {
+    background-color: lightgray;
+    opacity: 60%;
+}
+
+.outof > div > h3{
+    color: black
+}
+
+.stock div img{
+    width: 80%;
+    margin: 5% 10%;
+    clip-path: circle(50% at center);
+}
+
+.cart{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    column-gap: 1rem;
+    width: 100%;
+}
+
+.cart > div{
+    width: 20%;
+    background-color: green;
+    border-color: darkgreen;
+    border-left: 1rem;
+    border-bottom: 1rem;
+}
+
+.cart > div > h3{
+    font-family: 'Pushster', cursive;
+    font-size: x-large;
+    color: white;
+    margin-left: 5%;
+}
+
+.cart > div > p{
+    margin-left: 5%;
+    font-weight: 600;
+}
+
+.cart div img{
+    width: 80%;
+    margin: 5% 10%;
+    clip-path: circle(50% at center);
+}
+
+.button-container{
+    display: flex;
+    justify-content: center;
+    margin: 5% 0px;
+}
+
+.button-container input{
+    background-color: darkgreen;
+    color: white;
+    border: 1px white solid;
+    padding: 0.1rem 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.button-container input:hover{
+    cursor:pointer;
+}
+
+.button-container input:disabled{
+    color: black;
+    background-color: grey;
+    text-decoration: line-through;
+    border: none;
+    cursor: default;
+}
