@@ -95,7 +95,7 @@ class productViewer {
     showCart = false;
 
     generateStock(manager){
-        var txt = '<h3>¿Qué vas a comprar?</h3><div class="stock available">';
+        var txt = '<div id="stockWrapper"><h3>¿Qué vas a comprar?</h3><div class="stock available">';
         const available = manager.getAvailableStock()
         for (var p of available) {
             txt += `<div class="${p.id}block">`
@@ -111,13 +111,17 @@ class productViewer {
             txt += `<div class="button-container"><input type="button" value="Agregar" id="${p.id}StockButton" disabled></div>`;
             txt += '</div>';
         }
-        txt += '</div>';
+        txt += '</div></div>';
         //console.log(txt);
         return txt;
     }
 
-    generateCart(manager){
-        var txt = '<h3>Tus compras</h3><div class="cart">';
+    generateCart(manager, hidden=false){
+        if (hidden){
+            var txt = '<div id="cartWrapper" style="display:none"><h3>Tus compras</h3><div class="cart">';
+        } else {
+            var txt = '<div id="cartWrapper"><h3>Tus compras</h3><div class="cart">';
+        }
         const available = manager.getInCart()
         for (var p of available) {
             txt += `<div class="${p.id}block">`
@@ -125,7 +129,7 @@ class productViewer {
             txt += `<div class="button-container"><input type="button" value="Quitar" id="${p.id}CartButton"></div>`;
             txt += '</div>';
         }
-        txt += '</div>';
+        txt += '</div></div>';
         //console.log(txt);
         return txt;
     }
@@ -137,12 +141,26 @@ class productViewer {
 
     updateView(manager){
         if (this.showCart) {
-            $("#app").html("").append(this.generateCart(manager));
+            $("#app").html("").append(this.generateCart(manager)).append(this.generateStock(manager));
         } else {
             $("#app").html("").append(this.generateStock(manager));
         }
         this.defineEvents(manager);
         manager.writeStorage();
+    }
+
+    toggleCart(manager){
+        this.showCart = !this.showCart;
+        if(this.showCart){
+            $("#app").prepend(this.generateCart(manager, true));
+            $("#cartWrapper").slideDown(400, (e) => {
+                this.updateView(manager);
+            });
+        } else {
+            $("#cartWrapper").slideUp(400, (e) => {
+                this.updateView(manager);
+            });
+        } //just to make sure
     }
 
     defineEvents(manager){
@@ -187,8 +205,7 @@ pm.readStorage()
 $(document).ready( () => {
     pv.createView(pm);
     $('#headerButton').click((e) => {
-        pv.showCart = !pv.showCart;
-        pv.updateView(pm);
+        pv.toggleCart(pm);
     });
 }
 )
