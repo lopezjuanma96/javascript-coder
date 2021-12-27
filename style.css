@@ -45,7 +45,7 @@ header h1 {
     margin: 0px 5%;
 }
 
-#app > h3{
+#app > div > h3{
     position: relative;
     right: 2%;
     font-family: 'Pushster', cursive;
