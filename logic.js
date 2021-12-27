@@ -33,6 +33,8 @@ class cashManager {
 
 class cashViewer {
 
+    hoverCashActive = false;
+
     createView(manager){
         $("#currentCash").html(manager.getCash());
     }
@@ -46,9 +48,33 @@ class cashViewer {
 
     defineEvents(manager){
         $("#cashButton").click((e) => {
-            manager.addCash(1);
-            this.updateView(manager);
+            this.toggleHoverCash();
         })
+        $("#cashInput").keypress((e) => {
+            if((e.which < 48 || e.which > 57) && e.which != 45){ 
+                e.preventDefault();
+            }
+        });
+        $("#cashInputConfirm").click((e) => {
+            var aux = $("#cashInput").val();
+            if (aux != null && aux != ""){
+                manager.addCash(parseFloat(aux));
+                this.updateView(manager);
+            }
+            this.toggleHoverCash();
+        });
+        $("#cashInputCancel").click((e) => {
+            this.toggleHoverCash();
+        });
+    }
+
+    toggleHoverCash(){
+        this.hoverCashActive = !this.hoverCashActive;
+        if (this.hoverCashActive){
+            $(".hoverCash").fadeIn();//css("display", "initial");
+        } else {
+            $(".hoverCash").fadeOut(400, (e) => {$("#cashInput").val("")});//css("display", "none");
+        }
     }
 }
 
