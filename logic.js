@@ -1,3 +1,57 @@
+class cashManager {
+    cash = 0;
+
+    readStorage(){
+        var aux = localStorage.getItem("cash")
+        if(aux == null){
+            this.cash = 0;
+        } else {
+            this.cash = parseFloat(aux);
+        }
+    }
+
+    writeStorage(){
+        try {
+            localStorage.setItem("cash", this.cash);
+        } catch {
+            ;
+        }
+    }
+
+    addCash(amt){
+        this.cash += amt;
+    }
+
+    getCash(){
+        return this.cash;
+    }
+
+    setCash(value){
+        this.cash = value;
+    }
+}
+
+class cashViewer {
+
+    createView(manager){
+        $("#currentCash").html(manager.getCash());
+    }
+
+    updateView(manager){
+        if (parseFloat($("#currentCash").html()) != manager.getCash()){
+            $("#currentCash").html(manager.getCash());
+        }
+        manager.writeStorage();
+    }
+
+    defineEvents(manager){
+        $("#cashButton").click((e) => {
+            manager.addCash(1);
+            this.updateView(manager);
+        })
+    }
+}
+
 class productManager {
 
     productManager(){
@@ -200,10 +254,16 @@ class productViewer {
 }
 pm = new productManager();
 pv = new productViewer();
-pm.readStorage()
+pm.readStorage();
+
+cm = new cashManager();
+cv = new cashViewer();
+cm.readStorage();
 
 $(document).ready( () => {
     pv.createView(pm);
+    cv.createView(cm);
+    cv.defineEvents(cm);
     $('#headerButton').click((e) => {
         pv.toggleCart(pm);
     });

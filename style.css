@@ -21,6 +21,10 @@ header {
     margin: 0px;
 }
 
+#cashButton:hover{
+    cursor: pointer;
+}
+
 .headerButton{
     background-color: lightgrey;
     border: grey 2px solid;
