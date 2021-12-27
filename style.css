@@ -14,6 +14,7 @@ header {
     align-items: flex-end;
     justify-content: space-between;
     padding: 1% 1%;
+    padding-right: 0px;
     z-index: 0;
 }
 
@@ -22,11 +23,42 @@ header {
     margin: 0px;
 }
 
+.headerFunctions{
+    display:flex;
+    flex-direction:column;
+    align-items: end;
+    background-color: darkgreen;
+    padding: 1% 1%;
+    padding-left: 3%;
+    row-gap: 1rem;
+}
+
+.headerCash{
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bolder;
+}
+
+.headerCash p{
+    margin: 0px;
+}
+
+.headerCash input{
+    background-color: green;
+    border: white 3px solid;
+    color: white;
+    border-radius: 50%;
+    font-weight: bolder;
+}
+
 #cashButton:hover{
     cursor: pointer;
 }
 
 .headerButton{
+    width:fit-content;
     background-color: lightgrey;
     border: grey 2px solid;
     border-radius: 25%;
@@ -179,7 +211,6 @@ header h1 {
     background-color: black;
     opacity: 90%;
     width: 100%;
-    height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
     outline: 0;
